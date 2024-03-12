@@ -56,4 +56,8 @@ export default {
 
 <style scoped lang="scss">
 @use '../styles/generals.scss' as *;
+
+header{
+    background-color: grey;
+}
 </style>

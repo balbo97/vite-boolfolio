@@ -1,13 +1,15 @@
 <script setup>
-import Projects from './components/Projects.vue';
+import AppMain from './components/AppMain.vue';
 import AppHeader from './components/AppHeader.vue';
 </script>
 
 <template>
-  <AppHeader />
-  <Projects />
+  <div>
+    <AppHeader />
+    <AppMain />
+  </div>
 </template>
 
 <style scoped>
-  
+@import './styles/generals.scss';
 </style>
