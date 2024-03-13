@@ -12,17 +12,21 @@ export default {
    data() {
     return {
         store, 
-        projects: []
+        projects: [],
+        currentPage : 1,
+        lastPage : null
     }
    },
    created() {
     this.getProjects();
    },
    methods: {
-    getProjects(){
-        axios.get(`${this.store.baseUrl}/api/projects`).then((response) =>{
-            console.log(response.data.results)
-            this.projects = response.data.results
+    getProjects(pageNumber){
+        axios.get(`${this.store.baseUrl}/api/projects`, {params:{page : pageNumber}}).then((response) =>{
+            
+            this.projects = response.data.results.data; 
+            this.currentPage = response.data.results.current_page;
+            this.lastPage = response.data.results.lastPage;
         })
     }
    }
@@ -42,6 +46,14 @@ export default {
                 
                 <!-- Projects -->
                 <SingleProject v-for="project, index in projects" :key="index" :project= "project"/>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="pagination-buttons text-center my-3">
+                        <button class="btn btn-danger"  :class="currentPage = 1 ? 'disabled' : ''" @click="getProjects(currentPage -1)">Precedente</button>
+                        <button class="btn btn-success ms-3" :class="currentPage = lastPage ? 'disabled' : ''" @click="getProjects(currentPage +1)">Successiva</button>
+                    </div>
+                </div>
             </div>
         </div>
 

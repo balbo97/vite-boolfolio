@@ -12,9 +12,21 @@ export default {
     }
    },
    methods: {
+    // funzione che mi abbrevia il contenuto 
     createSubstr(){
         return this.project.content.substr(0, 70) + "...";
-    }
+    }, 
+    // funzione che in caso la immagine sia uguale a null  o undefined ritorna un placeholder altrimenti l'immagine stessa
+    // getImage(){
+    //     if(this.project.cover_image != null){
+    //         image = '/storage/' + this.project.cover_image;
+    //     }
+    //     else{
+    //         image = '/img/placeholder.jpg'
+    //     }
+
+    //     return `${this.store.baseUrl}${image}`;
+    // }
    },
 }
 </script>
